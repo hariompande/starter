@@ -1,18 +1,26 @@
-import { createAction, createFeatureSelector, createReducer, createSelector, on, props } from '@ngrx/store';
-
-export const featureKey = 'booking';
-
-export const actions = {
-  setParamId: createAction('[Booking] Set Param Id', props<{ paramId: string }>()),
-};
+import {
+  createAction,
+  createFeatureSelector,
+  createReducer,
+  createSelector,
+  on,
+  props,
+} from '@ngrx/store';
 
 export interface State {
   paramId: string | null;
 }
 
 export const initialState: State = {
-  paramId: null,
+  paramId: 'assdsdasdasd',
+};
+export const featureKey = 'booking';
 
+export const actions = {
+  setParamId: createAction(
+    '[Booking] Set Param Id',
+    props<{ paramId: string }>()
+  ),
 };
 
 export const reducer = createReducer(
@@ -20,12 +28,15 @@ export const reducer = createReducer(
   on(actions.setParamId, (state, { paramId }) => ({
     ...state,
     paramId,
-  })),
+  }))
 );
 
 // Selectors
 export const selectSlice = createFeatureSelector<State>(featureKey);
 
 export const selectors = {
-  selectBookingProductId: createSelector(selectSlice, (state: State) => state.paramId),
+  selectBookingProductId: createSelector(
+    selectSlice,
+    (state: State) => state.paramId
+  ),
 };

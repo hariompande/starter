@@ -1,7 +1,6 @@
 import { isDevMode } from '@angular/core';
-import { MetaReducer, ActionReducerMap } from '@ngrx/store';
+import { MetaReducer, ActionReducerMap, ActionReducer } from '@ngrx/store';
 import { routerReducer } from '@ngrx/router-store';
-
 import { State } from './state';
 
 /**
@@ -28,4 +27,13 @@ export const rootReducers: ActionReducerMap<State> = {
  * the root meta-reducer. To add more meta-reducers, provide an array of meta-reducers
  * that will be composed to form the root meta-reducer.
  */
-export const metaReducers: MetaReducer<State>[] = isDevMode() ? [] : [];
+export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+  return function (state, action) {
+    console.log('state', state);
+    console.log('action', action);
+
+    return reducer(state, action);
+  };
+}
+
+export const metaReducers: MetaReducer<State>[] = isDevMode() ? [debug] : [];

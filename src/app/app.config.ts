@@ -1,3 +1,4 @@
+import { State } from './store/state';
 import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
@@ -8,8 +9,10 @@ import {
 } from '@angular/platform-browser';
 import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
-import { provideStore } from '@ngrx/store';
+import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { RouterEffects } from './effects/router.effects';
+import { rootReducers, metaReducers } from './store/reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,8 +20,17 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideRouterStore(),
-    provideStore({}),
-    provideEffects(),
+    provideStore(rootReducers, {
+      metaReducers,
+      runtimeChecks: {
+        // strictStateImmutability and strictActionImmutability are enabled by default
+        strictStateSerializability: true,
+        strictActionSerializability: true,
+        strictActionWithinNgZone: true,
+        strictActionTypeUniqueness: true,
+      },
+    }),
+    provideEffects(RouterEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
