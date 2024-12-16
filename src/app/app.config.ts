@@ -14,6 +14,9 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { RouterEffects } from './effects/router.effects';
 import { rootReducers, metaReducers } from './store/reducers';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
+import { HttpLoaderFactory } from './translations/translate.module';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,6 +24,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideRouterStore(),
+    provideHttpClient(),
     provideStore(rootReducers, {
       metaReducers,
       runtimeChecks: {
@@ -28,7 +32,7 @@ export const appConfig: ApplicationConfig = {
         strictStateSerializability: true,
         strictActionSerializability: true,
         strictActionWithinNgZone: true,
-        strictActionTypeUniqueness: true,
+        strictActionTypeUniqueness: false,
       },
     }),
     provideEffects(),
@@ -38,6 +42,14 @@ export const appConfig: ApplicationConfig = {
       autoPause: true,
       trace: false,
       traceLimit: 75,
-    }), provideAnimationsAsync()
+    }), 
+    provideAnimationsAsync(),
+    provideTranslateService({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    })
   ],
 };

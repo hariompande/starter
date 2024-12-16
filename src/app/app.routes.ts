@@ -1,9 +1,14 @@
 import { Routes } from '@angular/router';
-import { BooksComponent } from './screens/books/books.component';
+import { LoginComponent } from './screens/login/login.component';
+// import { BooksComponent } from './screens/books/books.component';
 
 export const routes: Routes = [
+    // {
+        // path:'',
+        // component: BooksComponent
+    // },
     {
-        path:'',
-        component: BooksComponent
+        path:'login',
+        component: LoginComponent
     }
 ];
