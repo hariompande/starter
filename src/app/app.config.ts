@@ -31,7 +31,7 @@ export const appConfig: ApplicationConfig = {
         strictActionTypeUniqueness: true,
       },
     }),
-    provideEffects(RouterEffects),
+    provideEffects(),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
