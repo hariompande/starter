@@ -8,9 +8,8 @@ describe('LayoutDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LayoutDialogComponent]
-    })
-    .compileComponents();
+      imports: [LayoutDialogComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LayoutDialogComponent);
     component = fixture.componentInstance;

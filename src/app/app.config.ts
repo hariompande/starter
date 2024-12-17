@@ -1,5 +1,4 @@
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { State } from './store/state';
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -19,15 +18,13 @@ import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { rootReducers, metaReducers } from './store/reducers';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {
-  TranslateLoader,
-  TranslateModule,
-} from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 // AoT requires an exported function for factories
-const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
-  new TranslateHttpLoader(http, './i18n/', '.json');
+const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (
+  http: HttpClient
+) => new TranslateHttpLoader(http, './i18n/', '.json');
 
 export const appConfig: ApplicationConfig = {
   providers: [

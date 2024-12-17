@@ -14,23 +14,23 @@ export class AuthEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.loginPage.login),
-      map(action => action.credentials),
+      map((action) => action.credentials),
       exhaustMap((auth: Credentials) =>
         this.authService.login(auth).pipe(
-          map(user => actions.auth.loginSuccess({ user })),
-          catchError(error => of(actions.auth.loginFailure({ error }))),
-        ),
-      ),
-    ),
+          map((user) => actions.auth.loginSuccess({ user })),
+          catchError((error) => of(actions.auth.loginFailure({ error })))
+        )
+      )
+    )
   );
 
   loginSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(actions.auth.loginSuccess),
-        tap(() => this.router.navigate(['/'])),
+        tap(() => this.router.navigate(['/']))
       ),
-    { dispatch: false },
+    { dispatch: false }
   );
 
   loginRedirect$ = createEffect(
@@ -39,34 +39,34 @@ export class AuthEffects {
         ofType(actions.auth.loginRedirect, actions.auth.logout),
         tap(() => {
           this.router.navigate(['/login']);
-        }),
+        })
       ),
-    { dispatch: false },
+    { dispatch: false }
   );
 
   // logoutConfirmation$ = createEffect(() =>
-    // this.actions$.pipe(
-      // ofType(actions.auth.logoutConfirmation),
-      // exhaustMap(() => {
-        // const dialogRef = this.dialog.open<LayoutDialogComponent, undefined, boolean>(LayoutDialogComponent);
+  // this.actions$.pipe(
+  // ofType(actions.auth.logoutConfirmation),
+  // exhaustMap(() => {
+  // const dialogRef = this.dialog.open<LayoutDialogComponent, undefined, boolean>(LayoutDialogComponent);
 
-        // return dialogRef.afterClosed();
-      // }),
-      // map(result => (result ? actions.auth.logout() : actions.auth.logoutConfirmationDismiss())),
-    // ),
+  // return dialogRef.afterClosed();
+  // }),
+  // map(result => (result ? actions.auth.logout() : actions.auth.logoutConfirmationDismiss())),
+  // ),
   // );
 
   logoutIdleUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.user.idleTimeout),
-      map(() => actions.auth.logout()),
-    ),
+      map(() => actions.auth.logout())
+    )
   );
 
   constructor(
     private actions$: Actions,
     private authService: AuthService,
     private router: Router,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 }

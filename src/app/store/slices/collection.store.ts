@@ -41,14 +41,14 @@ const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(actions.init, state => ({
+  on(actions.init, (state) => ({
     ...state,
     loading: true,
   })),
   on(actions.loadBooksSuccess, (_state, { books }) => ({
     loaded: true,
     loading: false,
-    ids: books.map(book => book.id),
+    ids: books.map((book) => book.id),
   })),
   /**
    * Optimistically add book to collection.
@@ -72,8 +72,8 @@ export const reducer = createReducer(
    */
   on(booksActions.removeBook, actions.addBookFailure, (state, { book }) => ({
     ...state,
-    ids: state.ids.filter(id => id !== book.id),
-  })),
+    ids: state.ids.filter((id) => id !== book.id),
+  }))
 );
 
 // Selectors
@@ -86,7 +86,7 @@ export const selectors = {
   getCollectionLoading: createSelector(selectSlice, (state: State) => state.loading),
   selectCollectionBookIds,
   selectBookCollection: createSelector(booksSelectors.selectBookEntities, selectCollectionBookIds, (entities, ids) => {
-    return ids.map(id => entities[id]).filter((book): book is Book => book != null);
+    return ids.map((id) => entities[id]).filter((book): book is Book => book != null);
   }),
   isSelectedBookInCollection: createSelector(selectCollectionBookIds, booksSelectors.selectId, (ids, selected) => {
     return !!selected && ids.indexOf(selected) > -1;

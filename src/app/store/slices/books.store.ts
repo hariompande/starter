@@ -66,7 +66,7 @@ export const reducer = createReducer(
   on(actions.selectBook, (state, { id }) => ({
     ...state,
     selectedBookId: id,
-  })),
+  }))
 );
 
 /**
@@ -118,9 +118,9 @@ export const selectors = {
   selectSelectedBook: createSelector(
     selectBookEntities,
     selectId,
-    (entities, selectedId) => selectedId && entities[selectedId],
+    (entities, selectedId) => selectedId && entities[selectedId]
   ),
   selectSearchResults: createSelector(selectBookEntities, searchSelectors.selectSearchBookIds, (books, searchIds) => {
-    return searchIds.map(id => books[id]).filter((book): book is Book => book != null);
+    return searchIds.map((id) => books[id]).filter((book): book is Book => book != null);
   }),
 };

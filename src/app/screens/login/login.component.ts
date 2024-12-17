@@ -18,7 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatInputModule,
     AsyncPipe,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -38,7 +38,11 @@ export class LoginComponent {
       .select(selectors.loginPage.selectLoginPagePending)
       .pipe(takeUntilDestroyed())
       .subscribe((isPending) => {
-        isPending ? this.loginForm.disable() : this.loginForm.enable();
+        if (isPending) {
+          this.loginForm.disable();
+        } else {
+          this.loginForm.enable();
+        }
       });
   }
 

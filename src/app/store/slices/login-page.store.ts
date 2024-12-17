@@ -20,13 +20,13 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(actions.login, state => ({
+  on(actions.login, (state) => ({
     ...state,
     error: null,
     pending: true,
   })),
 
-  on(authActions.loginSuccess, state => ({
+  on(authActions.loginSuccess, (state) => ({
     ...state,
     error: null,
     pending: false,
@@ -36,7 +36,7 @@ export const reducer = createReducer(
     ...state,
     error,
     pending: false,
-  })),
+  }))
 );
 
 // Selectors

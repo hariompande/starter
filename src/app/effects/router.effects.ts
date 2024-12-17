@@ -19,11 +19,11 @@ export class RouterEffects {
         ofType(routerNavigatedAction),
         concatLatestFrom(() => this.store.select(selectors.router.selectRouteData)),
         map(([, data]) => `DS24 Application Reference - ${data['title']}`),
-        tap(title => this.titleService.setTitle(title)),
+        tap((title) => this.titleService.setTitle(title))
       ),
     {
       dispatch: false,
-    },
+    }
   );
 
   initCollection$ = createEffect(() =>
@@ -31,11 +31,11 @@ export class RouterEffects {
       ofType(routerNavigationAction),
       withLatestFrom(
         this.store.select(selectors.router.selectCurrentPage),
-        this.store.select(selectors.collection.selectCollectionLoaded),
+        this.store.select(selectors.collection.selectCollectionLoaded)
       ),
       filter(([, page, loaded]) => page === 'collection' && !loaded),
-      map(() => actions.collection.init()),
-    ),
+      map(() => actions.collection.init())
+    )
   );
 
   setSelectedBook$ = createEffect(() =>
@@ -43,16 +43,16 @@ export class RouterEffects {
       ofType(routerNavigationAction),
       withLatestFrom(
         this.store.select(selectors.router.selectCurrentPage),
-        this.store.select(selectors.router.selectRouteParam('id')),
+        this.store.select(selectors.router.selectRouteParam('id'))
       ),
       filter(([, page, id]) => page === 'collection' && !!id),
-      map(([, , id]) => actions.books.selectBook({ id: id as string })),
-    ),
+      map(([, , id]) => actions.books.selectBook({ id: id as string }))
+    )
   );
 
   constructor(
     private actions$: Actions,
     private store: Store,
-    private titleService: Title,
+    private titleService: Title
   ) {}
 }

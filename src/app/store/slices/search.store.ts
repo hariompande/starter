@@ -41,7 +41,7 @@ export const reducer = createReducer(
         };
   }),
   on(actions.searchSuccess, (state, { books }) => ({
-    ids: books.map(book => book.id),
+    ids: books.map((book) => book.id),
     loading: false,
     error: '',
     query: state.query,
@@ -50,7 +50,7 @@ export const reducer = createReducer(
     ...state,
     loading: false,
     error: errorMsg,
-  })),
+  }))
 );
 
 // Selectors
