@@ -13,6 +13,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { BookEffects } from './effects/book.effects';
+import { CollectionEffects } from './effects/collection.effects';
+import { RouterEffects } from './effects/router.effects';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
@@ -35,8 +37,8 @@ export const appConfig: ApplicationConfig = {
       },
     }),
     provideEffects(BookEffects),
-    // provideEffects(CollectionEffects),
-    // provideEffects(RouterEffects),
+    provideEffects(CollectionEffects),
+    provideEffects(RouterEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

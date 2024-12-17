@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 import { filter, map, tap, withLatestFrom } from 'rxjs/operators';
@@ -13,12 +13,15 @@ import * as actions from '../store/actions';
 
 @Injectable()
 export class RouterEffects {
+  actions$ = inject(Actions);
+  store = inject(Store);
+  titleService =  inject(Title);
   updateTitle$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(routerNavigatedAction),
         concatLatestFrom(() => this.store.select(selectors.router.selectRouteData)),
-        map(([, data]) => `DS24 Application Reference - ${data['title']}`),
+        map(([, data]) => `Application Reference - ${data['title']}`),
         tap((title) => this.titleService.setTitle(title))
       ),
     {
@@ -49,10 +52,4 @@ export class RouterEffects {
       map(([, , id]) => actions.books.selectBook({ id: id as string }))
     )
   );
-
-  constructor(
-    private actions$: Actions,
-    private store: Store,
-    private titleService: Title
-  ) {}
 }
