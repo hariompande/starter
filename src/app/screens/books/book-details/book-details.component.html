@@ -8,38 +8,35 @@
 
     <div class="text-left">
       <h1 class="text-2xl text-neutral-n500 leading-tight">{{ title }}</h1>
-      @if(subtitle){
+      @if (subtitle) {
         <h2 class="text-xl text-neutral-n300 p-0 mb-2 leading-tight">{{ subtitle }}</h2>
       }
 
-      @if(authors.length > 0) {
+      @if (authors.length > 0) {
         <div class="flex items-center mb-2">
-            <span class="text-neutral-n300 mr-2">{{ 'BOOKS.DETAILS.AUTHORS' | translate }}</span>
-            @for(author of authors; track author) {
-                <span
-                class="inline-flex items-center rounded-full bg-primary-p300-main px-2 py-1 m-1 text-xs font-medium text-primary-p100 ring-1 ring-inset ring-primary-p300"
-                >{{ author }}</span
-              >
-            }
-            
-          </div>
+          <span class="text-neutral-n300 mr-2">{{ 'BOOKS.DETAILS.AUTHORS' | translate }}</span>
+          @for (author of authors; track author) {
+            <span
+              class="inline-flex items-center rounded-full bg-primary-p300-main px-2 py-1 m-1 text-xs font-medium text-primary-p100 ring-1 ring-inset ring-primary-p300"
+              >{{ author }}</span
+            >
+          }
+        </div>
       }
-      
 
-      @if(published){
+      @if (published) {
         <div class="flex items-center mb-2">
-            <span class="text-neutral-n300 mr-2">{{ 'BOOKS.DETAILS.PUBLISHED' | translate }}</span>
-            <span class="text-neutral-n500">{{ published }}</span>
-          </div>
+          <span class="text-neutral-n300 mr-2">{{ 'BOOKS.DETAILS.PUBLISHED' | translate }}</span>
+          <span class="text-neutral-n500">{{ published }}</span>
+        </div>
       }
-   
-      @if(language) {
+
+      @if (language) {
         <div class="flex items-center mb-2">
-            <span class="text-neutral-n300 mr-2">{{ 'BOOKS.DETAILS.LANGUAGE' | translate }}</span>
-            <span class="text-neutral-n500">{{ language }}</span>
-          </div>
+          <span class="text-neutral-n300 mr-2">{{ 'BOOKS.DETAILS.LANGUAGE' | translate }}</span>
+          <span class="text-neutral-n500">{{ language }}</span>
+        </div>
       }
-     
     </div>
   </div>
   <blockquote class="text-left italic text-neutral-n500" [innerHtml]="description"></blockquote>

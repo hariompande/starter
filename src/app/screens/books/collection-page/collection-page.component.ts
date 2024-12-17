@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import * as selectors from '../../../store/selectors';
 import { Store } from '@ngrx/store';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-collection-page',
-  imports: [BookCardComponent, RouterModule, TranslateModule, AsyncPipe, JsonPipe],
+  imports: [BookCardComponent, RouterModule, TranslateModule, AsyncPipe],
   templateUrl: './collection-page.component.html',
 })
 export class CollectionPageComponent {

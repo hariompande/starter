@@ -10,7 +10,6 @@ import { Book } from '../types/book.types';
 
 @Injectable()
 export class CollectionEffects {
-
   actions$ = inject(Actions);
   storageService = inject(BookStorageService);
   /**

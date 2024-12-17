@@ -3,7 +3,6 @@ import { ApplicationConfig, importProvidersFrom, isDevMode, provideZoneChangeDet
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
@@ -15,6 +14,8 @@ import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { BookEffects } from './effects/book.effects';
 import { CollectionEffects } from './effects/collection.effects';
 import { RouterEffects } from './effects/router.effects';
+import { UserEffects } from './effects/user.effects';
+import { AuthEffects } from './effects/auth.effects';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
@@ -24,7 +25,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideClientHydration(withEventReplay()),
     provideRouterStore(),
     provideStore(rootReducers, {
       metaReducers,
@@ -39,6 +39,8 @@ export const appConfig: ApplicationConfig = {
     provideEffects(BookEffects),
     provideEffects(CollectionEffects),
     provideEffects(RouterEffects),
+    provideEffects(UserEffects),
+    provideEffects(AuthEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

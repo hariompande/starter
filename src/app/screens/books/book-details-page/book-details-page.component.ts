@@ -32,4 +32,10 @@ export class BookDetailsPageComponent {
         }
       });
   }
+
+  constructor() {
+    this.book$.subscribe((book) => {
+      console.log('book', book);
+    });
+  }
 }

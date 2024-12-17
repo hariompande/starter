@@ -2,12 +2,11 @@ import { inject, Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { asyncScheduler, EMPTY as empty, of } from 'rxjs';
-import { catchError, debounceTime, map, skip, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { catchError, debounceTime, map, skip, switchMap, takeUntil } from 'rxjs/operators';
 
 import { Book } from '../types/book.types';
 import * as actions from '../store/actions';
 import { GoogleBooksService } from '../services/google-books.service';
-import { Store } from '@ngrx/store';
 
 /**
  * Effects offer a way to isolate and easily test side-effects within your
@@ -23,7 +22,7 @@ import { Store } from '@ngrx/store';
 @Injectable()
 export class BookEffects {
   actions$ = inject(Actions);
-  googleBooks = inject(GoogleBooksService)
+  googleBooks = inject(GoogleBooksService);
   search$ = createEffect(
     () =>
       ({ debounce = 300, scheduler = asyncScheduler } = {}) =>

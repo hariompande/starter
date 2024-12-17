@@ -22,7 +22,7 @@ export const routes: Routes = [
     path: 'books/:id',
     canActivate: [bookExistsGuard],
     loadComponent: () =>
-      import('./screens/books/book-details/book-details.component').then((m) => m.BookDetailsComponent),
+      import('./screens/books/book-details-page/book-details-page.component').then((m) => m.BookDetailsPageComponent),
     data: { title: 'Book details', page: 'collection' },
   },
 ];

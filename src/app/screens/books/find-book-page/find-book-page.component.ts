@@ -15,7 +15,6 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [BookSearchComponent, AsyncPipe, BookCardComponent, RouterModule, TranslateModule],
   templateUrl: './find-book-page.component.html',
 })
-
 export class FindBookPageComponent {
   store = inject(Store);
   searchQuery$: Observable<string>;

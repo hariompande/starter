@@ -9,16 +9,16 @@
 
     <dl class="mt-1 flex flex-grow flex-col justify-between">
       <dd class="text-sm text-gray-500">{{ description | bcEllipsis }}</dd>
-      
-      @if(authors.length > 0){
+
+      @if (authors.length > 0) {
         <dd class="mt-3">
-            @for(author of authors; track author) {
-                <span
-                class="inline-flex items-center rounded-full bg-primary-p300-main m-1 px-2 py-1 text-xs font-medium text-primary-p100 ring-1 ring-inset ring-primary-p300"
-                >{{ author }}</span
-              >
-            } 
-          </dd>
+          @for (author of authors; track author) {
+            <span
+              class="inline-flex items-center rounded-full bg-primary-p300-main m-1 px-2 py-1 text-xs font-medium text-primary-p100 ring-1 ring-inset ring-primary-p300"
+              >{{ author }}</span
+            >
+          }
+        </dd>
       }
     </dl>
   </div>

@@ -15,13 +15,14 @@ import * as actions from '../store/actions';
 export class RouterEffects {
   actions$ = inject(Actions);
   store = inject(Store);
-  titleService =  inject(Title);
+  titleService = inject(Title);
+
   updateTitle$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(routerNavigatedAction),
         concatLatestFrom(() => this.store.select(selectors.router.selectRouteData)),
-        map(([, data]) => `Application Reference - ${data['title']}`),
+        map(([, data]) => `BookHub - ${data['title']}`),
         tap((title) => this.titleService.setTitle(title))
       ),
     {
@@ -49,6 +50,7 @@ export class RouterEffects {
         this.store.select(selectors.router.selectRouteParam('id'))
       ),
       filter(([, page, id]) => page === 'collection' && !!id),
+      tap(([, page, id]) => console.log(page, id)),
       map(([, , id]) => actions.books.selectBook({ id: id as string }))
     )
   );

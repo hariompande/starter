@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
@@ -11,6 +11,11 @@ import { Credentials } from '../types/user.types';
 
 @Injectable()
 export class AuthEffects {
+  actions$ = inject(Actions);
+  authService = inject(AuthService);
+  router = inject(Router);
+  dialog = inject(MatDialog);
+
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.loginPage.login),
@@ -62,11 +67,4 @@ export class AuthEffects {
       map(() => actions.auth.logout())
     )
   );
-
-  constructor(
-    private actions$: Actions,
-    private authService: AuthService,
-    private router: Router,
-    private dialog: MatDialog
-  ) {}
 }
