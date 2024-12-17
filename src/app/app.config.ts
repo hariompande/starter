@@ -1,5 +1,11 @@
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { State } from './store/state';
-import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  isDevMode,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -9,14 +15,19 @@ import {
 } from '@angular/platform-browser';
 import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
-import { provideState, provideStore } from '@ngrx/store';
+import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { RouterEffects } from './effects/router.effects';
 import { rootReducers, metaReducers } from './store/reducers';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
-import { HttpLoaderFactory } from './translations/translate.module';
+import {
+  TranslateLoader,
+  TranslateModule,
+} from '@ngx-translate/core';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
+
+// AoT requires an exported function for factories
+const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
+  new TranslateHttpLoader(http, './i18n/', '.json');
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,7 +35,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideRouterStore(),
-    provideHttpClient(),
     provideStore(rootReducers, {
       metaReducers,
       runtimeChecks: {
@@ -42,14 +52,17 @@ export const appConfig: ApplicationConfig = {
       autoPause: true,
       trace: false,
       traceLimit: 75,
-    }), 
+    }),
     provideAnimationsAsync(),
-    provideTranslateService({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    })
+    provideHttpClient(),
+    importProvidersFrom([
+      TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: httpLoaderFactory,
+          deps: [HttpClient],
+        },
+      }),
+    ]),
   ],
 };

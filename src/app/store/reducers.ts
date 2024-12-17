@@ -38,13 +38,13 @@ export const rootReducers: ActionReducerMap<State> = {
  * the root meta-reducer. To add more meta-reducers, provide an array of meta-reducers
  * that will be composed to form the root meta-reducer.
  */
-export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
-  return function (state, action) {
-    console.log('state', state);
-    console.log('action', action);
+// export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+  // return function (state, action) {
+    // console.log('state', state);
+    // console.log('action', action);
 
-    return reducer(state, action);
-  };
-}
+    // return reducer(state, action);
+  // };
+// }
 
-export const metaReducers: MetaReducer<State>[] = isDevMode() ? [debug] : [];
+export const metaReducers: MetaReducer<State>[] = [];

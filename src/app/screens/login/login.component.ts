@@ -9,22 +9,27 @@ import { Store } from '@ngrx/store';
 
 import * as selectors from '../../store/selectors';
 import * as actions from '../../store/actions';
-import { TranslationModule } from '../../translations/translate.module';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
-  imports: [MatFormFieldModule, MatInputModule, AsyncPipe, ReactiveFormsModule, TranslatePipe],
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    AsyncPipe,
+    ReactiveFormsModule,
+    TranslateModule
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  providers: []
+  providers: [],
 })
 export class LoginComponent {
   store = inject(Store);
   error$ = this.store.select(selectors.loginPage.selectLoginPageError);
 
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl('ngrx'),
+    username: new FormControl(''),
     password: new FormControl(''),
   });
 
