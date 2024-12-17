@@ -19,7 +19,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { rootReducers, metaReducers } from './store/reducers';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (
@@ -51,7 +51,7 @@ export const appConfig: ApplicationConfig = {
       traceLimit: 75,
     }),
     provideAnimationsAsync(),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     importProvidersFrom([
       TranslateModule.forRoot({
         loader: {
