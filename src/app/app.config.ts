@@ -1,17 +1,9 @@
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {
-  ApplicationConfig,
-  importProvidersFrom,
-  isDevMode,
-  provideZoneChangeDetection,
-} from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import {
-  provideClientHydration,
-  withEventReplay,
-} from '@angular/platform-browser';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
@@ -20,11 +12,11 @@ import { rootReducers, metaReducers } from './store/reducers';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+import { BookEffects } from './effects/book.effects';
 
 // AoT requires an exported function for factories
-const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (
-  http: HttpClient
-) => new TranslateHttpLoader(http, './i18n/', '.json');
+const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
+  new TranslateHttpLoader(http, './i18n/', '.json');
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -42,7 +34,9 @@ export const appConfig: ApplicationConfig = {
         strictActionTypeUniqueness: false,
       },
     }),
-    provideEffects(),
+    provideEffects(BookEffects),
+    // provideEffects(CollectionEffects),
+    // provideEffects(RouterEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

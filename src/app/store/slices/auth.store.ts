@@ -1,22 +1,9 @@
-import {
-  props,
-  createAction,
-  createReducer,
-  on,
-  createFeatureSelector,
-  createSelector,
-} from '@ngrx/store';
+import { props, createAction, createReducer, on, createFeatureSelector, createSelector } from '@ngrx/store';
 import { User } from '../../types/user.types';
 
 export const actions = {
-  loginSuccess: createAction(
-    '[Auth/API] Login Success',
-    props<{ user: User }>()
-  ),
-  loginFailure: createAction(
-    '[Auth/API] Login Failure',
-    props<{ error: any }>()
-  ),
+  loginSuccess: createAction('[Auth/API] Login Success', props<{ user: User }>()),
+  loginFailure: createAction('[Auth/API] Login Failure', props<{ error: any }>()),
   loginRedirect: createAction('[Auth/API] Login Redirect'),
   logout: createAction('[Auth] Logout'),
   logoutConfirmation: createAction('[Auth] Logout Confirmation'),

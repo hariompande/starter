@@ -43,12 +43,12 @@ export class BookEffects {
         )
   );
 
-  success$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(actions.collection.loadBooksSuccess),
-      map((payload) => actions.search.searchSuccess(payload))
-    )
-  );
+  // success$ = createEffect(() =>
+    // this.actions$.pipe(
+      // ofType(actions.collection.loadBooksSuccess),
+      // map((payload) => actions.search.searchSuccess(payload))
+    // )
+  // );
 
   constructor(
     private actions$: Actions,

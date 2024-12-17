@@ -13,13 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    AsyncPipe,
-    ReactiveFormsModule,
-    TranslateModule,
-  ],
+  imports: [MatFormFieldModule, MatInputModule, AsyncPipe, ReactiveFormsModule, TranslateModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [],
@@ -47,8 +41,6 @@ export class LoginComponent {
   }
 
   submit() {
-    this.store.dispatch(
-      actions.loginPage.login({ credentials: this.loginForm.value })
-    );
+    this.store.dispatch(actions.loginPage.login({ credentials: this.loginForm.value }));
   }
 }

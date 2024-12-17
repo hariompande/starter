@@ -11,8 +11,6 @@
     "test:coverage": "jest --coverage",
     "serve:ssr:starter": "node dist/starter/server/server.mjs",
     "e2e": "ng e2e",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "format": "prettier --write \"src/**/*.{ts,html,scss}\""

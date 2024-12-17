@@ -1,1 +1,19 @@
-<p>collection-page works!</p>
+<ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+
+    {{books$ | async | json}}
+  @for (book of books$ | async; track book.id) {
+    <app-book-card [book]="book">
+      <div class="-mt-px flex divide-x divide-gray-200">
+        <div class="flex w-0 flex-1">
+          <a
+            [routerLink]="['/books', book.id]"
+            class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-bold text-neutral-n500 hover:text-primary-p500 overflow-hidden"
+          >
+            <!-- <ds-icon [name]="icons.File" [size]="20" [color]="iconColors.Primary400"></ds-icon> -->
+            {{ 'BOOKS.COLLECTION.SHOW_DETAILS' | translate }}
+          </a>
+        </div>
+      </div>
+    </app-book-card>
+  }
+</ul>

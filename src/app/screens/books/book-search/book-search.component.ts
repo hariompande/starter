@@ -1,9 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-book-search',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './book-search.component.html',
-  styleUrl: './book-search.component.scss',
 })
-export class BookSearchComponent {}
+export class BookSearchComponent {
+  @Input() query = '';
+  @Input() searching = false;
+  @Input() error = '';
+  @Output() search = new EventEmitter<string>();
+
+  onSearch(event: KeyboardEvent): void {
+    this.search.emit((event.target as HTMLInputElement).value);
+  }
+}

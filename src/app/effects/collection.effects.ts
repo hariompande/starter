@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { defer, of } from 'rxjs';
@@ -10,6 +10,9 @@ import { Book } from '../types/book.types';
 
 @Injectable()
 export class CollectionEffects {
+
+  actions$ = inject(Actions);
+  storageService = inject(BookStorageService);
   /**
    * This effect does not yield any actions back to the store. Set
    * `dispatch` to false to hint to @ngrx/effects that it should
@@ -57,9 +60,4 @@ export class CollectionEffects {
       )
     )
   );
-
-  constructor(
-    private actions$: Actions,
-    private storageService: BookStorageService
-  ) {}
 }
