@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap, take, tap } from 'rxjs/operators';
 
-import { GoogleBooksService } from './services/google-books.service';
-import * as selectors from './store/selectors';
-import * as actions from './store/actions';
+import { GoogleBooksService } from './../../../services/google-books.service';
+import * as selectors from './../../../store/selectors';
+import * as actions from './../../../store/actions';
 
 /**
  * Guards are hooks into the route resolution process, providing an opportunity

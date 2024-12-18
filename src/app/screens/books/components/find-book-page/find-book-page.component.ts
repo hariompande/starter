@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Book } from '../../../types/book.types';
+import { Book } from '../../../../types/book.types';
 import { Store } from '@ngrx/store';
-import * as actions from '../../../store/actions';
-import * as selectors from '../../../store/selectors';
+import * as actions from '../../../../store/actions';
+import * as selectors from '../../../../store/selectors';
 import { BookSearchComponent } from '../book-search/book-search.component';
 import { AsyncPipe } from '@angular/common';
 import { BookCardComponent } from '../book-card/book-card.component';

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { get } from 'lodash-es';
-import { Book } from '../../../types/book.types';
+import { Book } from '../../../../types/book.types';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

@@ -7,8 +7,8 @@ import { Component, inject } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import * as selectors from '../../store/selectors';
-import * as actions from '../../store/actions';
+import * as selectors from '../.././../../store/selectors';
+import * as actions from '../.././../../store/actions';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

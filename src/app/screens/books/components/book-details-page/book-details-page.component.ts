@@ -3,9 +3,9 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, combineLatest, take } from 'rxjs';
 
-import * as actions from '../../../store/actions';
-import * as selectors from '../../../store/selectors';
-import { Book } from '../../../types/book.types';
+import * as actions from '../../../../store/actions';
+import * as selectors from '../../../../store/selectors';
+import { Book } from '../../../../types/book.types';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { BookDetailsComponent } from '../book-details/book-details.component';
 

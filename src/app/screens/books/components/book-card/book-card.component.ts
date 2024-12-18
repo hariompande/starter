@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { EllipsisPipe } from '../../../shared/pipes/ellipsis.pipe';
+import { EllipsisPipe } from '../../../../shared/pipes/ellipsis.pipe';
 import { get } from 'lodash-es';
-import { Book } from '../../../types/book.types';
+import { Book } from '../../../../types/book.types';
 
 @Component({
   selector: 'app-book-card',
