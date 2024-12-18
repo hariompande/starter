@@ -22,7 +22,7 @@ export class RouterEffects {
       this.actions$.pipe(
         ofType(routerNavigatedAction),
         concatLatestFrom(() => this.store.select(selectors.router.selectRouteData)),
-        map(([, data]) => `BookHub - ${data['title']}`),
+        map(([, data]) => `BookVista - ${data['title']}`),
         tap((title) => this.titleService.setTitle(title))
       ),
     {

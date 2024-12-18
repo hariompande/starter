@@ -2,15 +2,12 @@
   "name": "starter",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "serve:ssr:starter": "node dist/starter/server/server.mjs",
-    "e2e": "ng e2e",
     "lint:format": "prettier --write \"src/**/*.{ts,html,scss}\"",
     "lint:fix": "ng lint --fix",
     "tidy": "run-s lint:*"

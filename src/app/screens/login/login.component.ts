@@ -15,7 +15,6 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-login',
   imports: [MatFormFieldModule, MatInputModule, AsyncPipe, ReactiveFormsModule, TranslateModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
   providers: [],
 })
 export class LoginComponent {

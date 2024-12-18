@@ -33,7 +33,7 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(actions.auth.loginSuccess),
-        tap(() => this.router.navigate(['/']))
+        tap(() => this.router.navigate(['/books/find']))
       ),
     { dispatch: false }
   );
