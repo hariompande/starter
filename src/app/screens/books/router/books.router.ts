@@ -12,14 +12,14 @@ export const booksRoutes: Routes = [
   {
     path: 'books/find',
     loadComponent: () =>
-      import('./../components/book-details-page/book-details-page.component').then((m) => m.BookDetailsPageComponent),
+      import('./../components/find-book-page/find-book-page.component').then((m) => m.FindBookPageComponent),
     canActivate: [authGuard],
   },
   {
     path: 'books/:id',
-    canActivate: [bookExistsGuard, authGuard],
+    canActivate: [bookExistsGuard],
     loadComponent: () =>
-      import('./../components/book-details/book-details.component').then((m) => m.BookDetailsComponent),
+      import('./../components/book-details-page/book-details-page.component').then((m) => m.BookDetailsPageComponent),
     data: { title: 'Book details', page: 'collection' },
   },
 ];

@@ -50,7 +50,6 @@ export class RouterEffects {
         this.store.select(selectors.router.selectRouteParam('id'))
       ),
       filter(([, page, id]) => page === 'collection' && !!id),
-      tap(([, page, id]) => console.log(page, id)),
       map(([, , id]) => actions.books.selectBook({ id: id as string }))
     )
   );
