@@ -10,7 +10,7 @@
     "test:coverage": "jest --coverage",
     "lint:format": "prettier --write \"src/**/*.{ts,html,scss}\"",
     "lint:fix": "ng lint --fix",
-    "tidy": "run-s lint:*"
+    "tidy": "npx run-s lint:*"
   },
   "private": true,
   "dependencies": {

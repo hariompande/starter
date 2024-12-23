@@ -1,41 +1,51 @@
-<mat-sidenav-container [ngClass]="layoutStore.sideNavActive() === true ? 'd-block': 'flex'">
-    <mat-sidenav #drawer 
-      class="bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 rounded-none"
-      [mode]="'side'"
-      [opened]="layoutStore.sideNavActive()">
-      
-      <!-- Main Navigation -->
-      <div class="h-full flex flex-col">
-        <div class="flex-grow overflow-y-auto">
-          <mat-nav-list class="py-5">
+<mat-sidenav-container [ngClass]="layoutStore.sideNavActive() === true ? 'd-block' : 'flex'">
+  <mat-sidenav
+    #drawer
+    class="bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 rounded-none"
+    [mode]="'side'"
+    [opened]="layoutStore.sideNavActive()"
+  >
+    <!-- Main Navigation -->
+    <div class="h-full flex flex-col">
+      <div class="flex-grow overflow-y-auto">
+        <mat-nav-list class="py-5">
+          <a
+            mat-list-item
+            routerLink="/docs"
+            class="flex items-center p-2 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-none"
+          >
+            <mat-icon class="text-gray-500 dark:text-gray-400">library_books</mat-icon>
+            <span class="ml-3">Docs</span>
+          </a>
+          <a
+            mat-list-item
+            routerLink="/components"
+            class="flex items-center p-2 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-none"
+          >
+            <mat-icon class="text-gray-500 dark:text-gray-400">widgets</mat-icon>
+            <span class="ml-3">Components</span>
+          </a>
+        </mat-nav-list>
+      </div>
 
-            <a mat-list-item routerLink="/docs"
-               class="flex items-center p-2 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-none">
-              <mat-icon class="text-gray-500 dark:text-gray-400">library_books</mat-icon>
-              <span class="ml-3">Docs</span>
-            </a>
-            <a mat-list-item routerLink="/components"
-               class="flex items-center p-2 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-none">
-              <mat-icon class="text-gray-500 dark:text-gray-400">widgets</mat-icon>
-              <span class="ml-3">Components</span>
-            </a>
-          </mat-nav-list>
-        </div>
-  
-        <!-- Bottom Toolbar -->
-        <div class="p-4 mt-auto border-t border-gray-200 dark:border-gray-700">
-          <div class="flex justify-between">
-            <button mat-icon-button
-                    class="p-2 text-gray-500 rounded-none dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon>settings</mat-icon>
-            </button>
-           
-            <button mat-icon-button
-                    class="p-2 text-gray-500 rounded-none dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon>language</mat-icon>
-            </button>
-          </div>
+      <!-- Bottom Toolbar -->
+      <div class="p-4 mt-auto border-t border-gray-200 dark:border-gray-700">
+        <div class="flex justify-between">
+          <button
+            mat-icon-button
+            class="p-2 text-gray-500 rounded-none dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <mat-icon>settings</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            class="p-2 text-gray-500 rounded-none dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <mat-icon>language</mat-icon>
+          </button>
         </div>
       </div>
-    </mat-sidenav>
-  </mat-sidenav-container>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

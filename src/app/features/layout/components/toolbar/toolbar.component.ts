@@ -9,16 +9,10 @@ import { selectors } from '../../../../store';
 import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-toolbar',
-  imports: [ MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatIconModule,
-    RouterLink
-  ],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatIconModule, RouterLink],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss',
-  providers: [LayoutStore]
+  providers: [LayoutStore],
 })
 export class ToolbarComponent {
   store = inject(Store);
@@ -34,7 +28,7 @@ export class ToolbarComponent {
     this.layoutStore.toggleTheme();
   }
 
-  changeSideNaveVisibility(){
+  changeSideNaveVisibility() {
     this.layoutStore.changeSideNavVisibility();
   }
 }

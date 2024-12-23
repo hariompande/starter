@@ -34,12 +34,11 @@ export const LayoutStore = signalStore(
     return {
       toggleTheme() {
         patchState(store, { darkMode: !store.darkMode() });
-        if(document.documentElement.classList.contains('dark')){
+        if (document.documentElement.classList.contains('dark')) {
           document.documentElement.classList.remove('dark');
         } else {
           document.documentElement.classList.add('dark');
         }
-        
       },
       initializeTheme() {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -50,9 +49,9 @@ export const LayoutStore = signalStore(
           document.documentElement.classList.remove('dark');
         }
       },
-      changeSideNavVisibility(){
-        patchState(store, { sideNavActive: !store.sideNavActive() })
-      }
+      changeSideNavVisibility() {
+        patchState(store, { sideNavActive: !store.sideNavActive() });
+      },
     };
   })
 );

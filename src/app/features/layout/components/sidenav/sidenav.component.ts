@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutStore } from '../../store/layout.store';
-import {  NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-sidenav',
@@ -26,17 +26,14 @@ import {  NgClass } from '@angular/common';
     NgClass,
   ],
   styleUrls: ['./sidenav.component.scss'],
-  providers: [LayoutStore]
+  providers: [LayoutStore],
 })
 export class SidenavComponent implements OnInit {
   layoutStore = inject(LayoutStore);
   media = inject(MediaMatcher);
   mobileQuery!: MediaQueryList;
 
-
-
   ngOnInit() {
-
     this.layoutStore.initializeTheme();
   }
 }
