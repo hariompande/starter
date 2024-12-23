@@ -42,7 +42,7 @@ jobs:
           cache: 'npm'
 
       - name: Lint and Format
-        run: npx ng lint --fix
+        run: npm run tidy
 
   test:
     name: Run Tests
@@ -60,10 +60,7 @@ jobs:
           cache: 'npm'
 
       - name: Run Unit Tests
-        run: npx ng test --watch=false
-
-      - name: Run Coverage Tests
-        run: npm run test:coverage
+        run: npm run test
 
   build:
     name: Build Application
@@ -81,4 +78,4 @@ jobs:
           cache: 'npm'
 
       - name: Build Project
-        run: npx ng build
+        run: npm run build
