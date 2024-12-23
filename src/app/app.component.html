@@ -1,3 +1,8 @@
-<div class class="max-w-[80%] m-auto mt-6">
-  <router-outlet />
-</div>
+<app-layout>
+  <app-toolbar class="w-full"></app-toolbar>
+  <app-sidenav></app-sidenav>
+
+  <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden p-10">
+    <router-outlet></router-outlet>
+  </div>
+</app-layout>

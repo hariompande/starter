@@ -1,0 +1,82 @@
+<mat-toolbar [color]="layoutStore.darkMode() ? 'dark' : 'light'" class="dark:bg-gray-800 dark:text-gray-100 sticky">
+  <mat-toolbar-row>
+    <!-- Sidenav Toggle -->
+    <span class="brand pr-6">
+      <button (click)="changeSideNaveVisibility()" class="dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </span>
+
+    <!-- Navigation Links -->
+    <div class="navigation-items flex ">
+      <p class="text-2xl w-full font-bold text-blue-300 text-center">
+        book<span class="text-blue-400">vista</span>
+      </p>
+      <button 
+        mat-button 
+        routerLink="/" 
+        class="dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700">
+        Home
+      </button>
+      <button 
+        mat-button 
+        routerLink="/books/find" 
+        class="dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700">
+        Books
+      </button>
+    </div>
+
+    <!-- Right-aligned Items -->
+    <span class="spacer"></span>
+
+    <!-- User Menu -->
+    @if(isLoggedIn) {
+      <button 
+        mat-button 
+        [matMenuTriggerFor]="userMenu" 
+        class="dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700">
+        <mat-icon>account_circle</mat-icon>
+        My Account
+      </button>
+      <mat-menu #userMenu="matMenu" class="bg-gray-100 dark:bg-gray-900 dark:text-gray-400 min-w-40">
+        <button 
+          mat-menu-item 
+          routerLink="/profile" 
+          class="dark:hover:bg-gray-700">
+          <mat-icon>person</mat-icon>
+          Profile
+        </button>
+        <button 
+          mat-menu-item 
+          routerLink="/settings" 
+          class="dark:hover:bg-gray-700">
+          <mat-icon>settings</mat-icon>
+          Settings
+        </button>
+        <button 
+          mat-menu-item 
+          (click)="onLogout()" 
+          class="dark:hover:bg-gray-700">
+          <mat-icon>exit_to_app</mat-icon>
+          Logout
+        </button>
+      </mat-menu>
+    } @else {
+      <button 
+        mat-button
+        routerLink="/login" 
+        class="dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700">
+        <mat-icon>login</mat-icon>
+        Login
+      </button>
+    }
+
+    <!-- Theme Toggle -->
+    <button 
+      mat-icon-button 
+      (click)="toggleTheme()" 
+      class="p-2 text-gray-500 rounded-none hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400">
+      <mat-icon>{{ layoutStore.darkMode() ? 'dark_mode' : 'light_mode' }}</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
