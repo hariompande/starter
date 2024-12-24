@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { authGuard } from '../../../router/auth-guard.service';
+// import { authGuard } from '../../../router/auth-guard.service';
 import { bookExistsGuard } from './book-exists.guard';
 
 export const booksRoutes: Routes = [
@@ -13,7 +13,7 @@ export const booksRoutes: Routes = [
     path: 'books/find',
     loadComponent: () =>
       import('./../components/find-book-page/find-book-page.component').then((m) => m.FindBookPageComponent),
-    canActivate: [authGuard],
+    canActivate: [],
   },
   {
     path: 'books/:id',

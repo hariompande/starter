@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 export class BookSearchComponent {
   @Input() query = '';
   @Input() searching = false;
-  @Input() error = '';
+  @Input() error: unknown = '';
   @Output() search = new EventEmitter<string>();
 
   onSearch(event: KeyboardEvent): void {

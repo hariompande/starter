@@ -1,12 +1,11 @@
-<mat-sidenav-container [ngClass]="layoutStore.sideNavActive() === true ? 'd-block' : 'flex'">
+<mat-sidenav-container>
   <mat-sidenav
-    #drawer
     class="bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 rounded-none"
     [mode]="'side'"
-    [opened]="layoutStore.sideNavActive()"
+    [opened]="true"
   >
     <!-- Main Navigation -->
-    <div class="h-full flex flex-col">
+    <div class="h-full flex">
       <div class="flex-grow overflow-y-auto">
         <mat-nav-list class="py-5">
           <a

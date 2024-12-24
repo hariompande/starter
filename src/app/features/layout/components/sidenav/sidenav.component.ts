@@ -9,7 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutStore } from '../../store/layout.store';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-sidenav',
@@ -23,7 +22,6 @@ import { NgClass } from '@angular/common';
     MatToolbarModule,
     MatMenuModule,
     MatBadgeModule,
-    NgClass,
   ],
   styleUrls: ['./sidenav.component.scss'],
   providers: [LayoutStore],

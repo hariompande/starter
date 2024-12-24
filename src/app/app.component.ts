@@ -3,11 +3,10 @@ import { RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { LangService } from './services/lang.service';
 import { LayoutComponent } from './features/layout/components/layout/layout.component';
-import { SidenavComponent } from './features/layout/components/sidenav/sidenav.component';
 import { ToolbarComponent } from './features/layout/components/toolbar/toolbar.component';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TranslateModule, LayoutComponent, SidenavComponent, ToolbarComponent],
+  imports: [RouterOutlet, TranslateModule, LayoutComponent, ToolbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

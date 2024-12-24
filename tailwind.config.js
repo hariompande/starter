@@ -1,7 +1,8 @@
+import tailwindcssMotion from "tailwindcss-motion";
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-    content: ['./src/**/*.{html,scss,ts}', './node_modules/@ds24/elements/**/*.mjs'],
+    content: ['./src/**/*.{html,scss,ts}'],
     important: true,
     theme: { extend: {
       colors: {
@@ -19,7 +20,6 @@ module.exports = {
       'display': ['Poppins'],
       'body': ['"Roboto"'],
     },
-    plugins: [],
-    darkMode: 'class',
+    plugins: [tailwindcssMotion],
+    darkMode: 'selector',
   };
-  
