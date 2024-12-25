@@ -24,11 +24,11 @@ export const BookStore = signalStore(
         const abortSignal = params.abortSignal;
         console.log(abortSignal);
 
-        if(!query || query === '') {
+        if (!query || query === '') {
           return { items: [] };
         }
-        const bookData = (await store._booksService.getBooks(query));
-        if(!bookData.ok) throw new Error('Error fetching books');
+        const bookData = await store._booksService.getBooks(query);
+        if (!bookData.ok) throw new Error('Error fetching books');
 
         return await bookData.json();
       },
@@ -38,7 +38,7 @@ export const BookStore = signalStore(
     bookResource: store._booksResource.asReadonly(),
   })),
   withComputed((store) => ({
-    latestBooks: computed(() => store._booksResource.hasValue() ? store._booksResource.value()?.items : []),
+    latestBooks: computed(() => (store._booksResource.hasValue() ? store._booksResource.value()?.items : [])),
     isLoading: computed(() => store._booksResource.isLoading()),
     error: computed(() => store._booksResource.error()),
   }))

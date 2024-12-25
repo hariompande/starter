@@ -1,19 +1,15 @@
-<app-book-search
-  [query]="bookStore.query()"
-  [error]="bookStore.error()"
-  (search)="bookStore.updateQuery($event)"
->
+<app-book-search [query]="bookStore.query()" [error]="bookStore.error()" (search)="bookStore.updateQuery($event)">
 </app-book-search>
-@if(bookStore.error()) {
-  <div class="bg-red-300 rounded-xl overflow-hidden w-fit p-4"><p class="motion-preset-typewriter dark:text-white text-gray-900 ">
-    {{ bookStore.error() }}
-  </p></div>
+@if (bookStore.error()) {
+  <div class="bg-red-300 rounded-xl overflow-hidden w-fit p-4">
+    <p class="motion-preset-typewriter dark:text-white text-gray-900">
+      {{ bookStore.error() }}
+    </p>
+  </div>
 }
 <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 min-h-screen">
-  @if(bookStore.isLoading()) {
-    <li><p class="motion-preset-typewriter dark:text-white text-gray-900">
-      Loading...
-    </p></li>
+  @if (bookStore.isLoading()) {
+    <li><p class="motion-preset-typewriter dark:text-white text-gray-900">Loading...</p></li>
   }
   @for (book of bookStore.latestBooks(); track book.id) {
     <li>
@@ -33,9 +29,7 @@
     </li>
   }
 
-  @if(bookStore.latestBooks().length === 0 && !bookStore.isLoading() && !bookStore.error()) {
-    <li><p class="motion-preset-typewriter dark:text-white text-gray-900">
-      There are no items.
-    </p></li>
+  @if (bookStore.latestBooks().length === 0 && !bookStore.isLoading() && !bookStore.error()) {
+    <li><p class="motion-preset-typewriter dark:text-white text-gray-900">There are no items.</p></li>
   }
 </ul>

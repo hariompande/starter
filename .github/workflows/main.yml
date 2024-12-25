@@ -42,7 +42,9 @@ jobs:
           cache: 'npm'
 
       - name: Lint and Format
-        run: npm run tidy
+        run: |
+          npm run lint:format
+          npm run lint:fix
 
   test:
     name: Run Tests
