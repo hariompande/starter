@@ -9,23 +9,6 @@ on:
       - master
 
 jobs:
-  setup:
-    name: Setup Environment
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
   lint:
     name: Lint Code
     runs-on: ubuntu-latest
@@ -42,10 +25,7 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: |
-          npm install -g prettier
-          npm install -g eslint
-          npm install -g @angular/cli
+        run: npm ci
 
       - name: Lint and Format
         run: |
