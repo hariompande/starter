@@ -1,0 +1,19 @@
+
+name: Setup Environment
+description: Sets up the environment for the CI pipeline
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install Dependencies
+      shell: bash
+      run: npm ci

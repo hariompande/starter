@@ -32,23 +32,8 @@ jobs:
     needs: setup
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: |
-          npm install -g prettier
-          npm install -g eslint
-          npm install -g @angular/cli
-          npm install -g @typescript-eslint/eslint-plugin
-          npm install -g @typescript-eslint/parser
-          npm install -g typescript
+      - name: Use Setup Job
+        uses: ./.github/actions/setup
 
       - name: Lint and Format
         run: |
@@ -61,17 +46,8 @@ jobs:
     needs: lint
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
+      - name: Use Setup Job
+        uses: ./.github/actions/setup
 
       - name: Run Unit Tests
         run: npm run test
@@ -82,17 +58,8 @@ jobs:
     needs: test
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
+      - name: Use Setup Job
+        uses: ./.github/actions/setup
 
       - name: Build Project
         run: npm run build
