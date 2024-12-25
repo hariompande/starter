@@ -41,6 +41,11 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Install Dependencies
+        run: |
+          npm install -g prettier
+          npm install -g eslint
+
       - name: Lint and Format
         run: |
           npm run lint:format
