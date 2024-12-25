@@ -6,5 +6,4 @@ import { LayoutStore } from '../../store/layout.store';
   templateUrl: './layout.component.html',
   providers: [LayoutStore],
 })
-export class LayoutComponent {
-}
+export class LayoutComponent {}

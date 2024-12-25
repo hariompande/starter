@@ -1,1 +1,1 @@
-npm run tidy
+npm run tidy || exit 1
