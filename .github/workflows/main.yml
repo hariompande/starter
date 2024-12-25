@@ -32,6 +32,9 @@ jobs:
     needs: setup
 
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
       - name: Use Setup Job
         uses: ./.github/actions/setup
 
@@ -46,6 +49,9 @@ jobs:
     needs: lint
 
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
       - name: Use Setup Job
         uses: ./.github/actions/setup
 
@@ -58,6 +64,9 @@ jobs:
     needs: test
 
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
       - name: Use Setup Job
         uses: ./.github/actions/setup
 
