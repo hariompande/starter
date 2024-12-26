@@ -1,21 +1,26 @@
+import Material from '@primeng/themes/material';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ApplicationConfig, importProvidersFrom, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './router/app.routes';
+
 import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { rootReducers, metaReducers } from './store/reducers';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+
 import { BookEffects } from './effects/book.effects';
 import { CollectionEffects } from './effects/collection.effects';
 import { RouterEffects } from './effects/router.effects';
 import { UserEffects } from './effects/user.effects';
 import { AuthEffects } from './effects/auth.effects';
+
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+
+import { providePrimeNG } from 'primeng/config';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
@@ -50,6 +55,15 @@ export const appConfig: ApplicationConfig = {
     }),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
+    providePrimeNG({
+      ripple: true,
+      theme: {
+        preset: Material,
+        options: {
+          darkModeSelector: '.dark',
+        },
+      },
+    }),
     importProvidersFrom([
       TranslateModule.forRoot({
         loader: {
